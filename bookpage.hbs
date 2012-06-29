@@ -1,0 +1,39 @@
+<script>
+{
+  "title"  : {{{esc Title}}}
+}
+</script>
+
+<div itemscope itemtype="http://schema.org/Book">
+
+  {{#if Image}}
+  <img itemprop="image" src="{{Image}}" />
+  {{else}}
+    <img src="noimage.jpg" />
+  {{/if}}
+  <a itemprop="name" href="{{DetailPageURL}}">{{Title}}</a> -
+  {{#each Author}}
+    <span itemprop="author">{{.}}</span>
+  {{/each}}
+
+  {{#if Price}}
+  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    Price: <span itemprop="price">{{Price}}</span>
+    <meta itemprop="priceCurrency" content="USD" />
+  </div>
+  {{/if}}
+
+  <div class="book-details">
+    <h3>Product details</h3>
+    {{#if Publisher}}
+    Publisher: <span itemprop="publisher">{{Publisher}}</span> -
+    {{/if}}
+    {{#if Published}}
+      <meta itemprop="datePublished" content="{{Published}}">{{Published}}
+    {{else}}
+      Not yet published
+    {{/if}}
+    ISBN-10: <span itemprop="isbn">{{ISBN}}</span>
+  </div>
+
+</div>
